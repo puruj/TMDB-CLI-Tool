@@ -7,9 +7,6 @@ namespace TMDBCLITool.Models
         [JsonPropertyName("title")]
         public required string Title { get; set; }
 
-        [JsonPropertyName("overview")]
-        public required string Overview { get; set; }
-
         [JsonPropertyName("release_date")]
         public DateTime ReleaseDate { get; set; }
 
