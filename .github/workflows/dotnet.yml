@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
@@ -20,13 +20,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore
-        run: dotnet restore
-        working-directory: TMDBCLITool
+        run: dotnet restore TMDBCLITool.sln
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
-        working-directory: TMDBCLITool
+        run: dotnet build TMDBCLITool.sln --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test --configuration Release --no-build --verbosity normal
-        working-directory: TMDBCLITool
+        run: dotnet test TMDBCLIToolTests/TMDBCLIToolTests.csproj --configuration Release --no-build --verbosity normal
