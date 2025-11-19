@@ -10,8 +10,7 @@ public static class Program
         // 1. Validate and map the command
         var command = args.Length > 0 ? args[0] : null;
 
-        if (string.IsNullOrWhiteSpace(command) ||
-            command.Equals("help", StringComparison.OrdinalIgnoreCase))
+        if (string.IsNullOrWhiteSpace(command) || command.Equals("help", StringComparison.OrdinalIgnoreCase))
         {
             PrintUsage();
             // If no command was passed, treat as error; if "help", exit 0
@@ -140,11 +139,15 @@ public static class Program
 
                 // Ignore empty lines and comments
                 if (string.IsNullOrEmpty(trimmed) || trimmed.StartsWith('#'))
+                {
                     continue;
+                }
 
                 var parts = trimmed.Split('=', 2);
                 if (parts.Length != 2)
+                {
                     continue;
+                }
 
                 var key = parts[0].Trim();
                 var value = parts[1].Trim().Trim('"'); // remove surrounding quotes
