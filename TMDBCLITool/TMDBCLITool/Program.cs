@@ -1,5 +1,7 @@
-﻿using System.Net.Http;
-using TMDBCLITool;
+﻿using System;
+using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace TMDBCLITool;
 
@@ -10,7 +12,7 @@ public static class Program
         // 1. Validate and map the command
         var command = args.Length > 0 ? args[0] : null;
 
-        if (string.IsNullOrWhiteSpace(command) || command.Equals("help", StringComparison.OrdinalIgnoreCase))
+        if (string.IsNullOrWhiteSpace(command) || command.Equals("help", System.StringComparison.OrdinalIgnoreCase))
         {
             PrintUsage();
             // If no command was passed, treat as error; if "help", exit 0

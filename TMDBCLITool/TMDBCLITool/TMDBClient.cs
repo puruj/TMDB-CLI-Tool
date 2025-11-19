@@ -1,14 +1,18 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Threading.Tasks;
 using TMDBCLITool.Models;
+
 
 namespace TMDBCLITool
 {
     public class TMDBClient
     {
-        private readonly HttpClient _httpClient;
+        private readonly System.Net.Http.HttpClient _httpClient;
         private static JsonSerializerOptions _options = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
@@ -30,7 +34,7 @@ namespace TMDBCLITool
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
-        public async Task<MovieListResponse?> GetMovieListAsync(string typeOfMovie, CancellationToken cancellationToken = default)
+        public async Task<MovieListResponse?> GetMovieListAsync(string typeOfMovie, System.Threading.CancellationToken cancellationToken = default)
         {
             // This becomes https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1
             var url = $"movie/{typeOfMovie}?language=en-US&page=1";

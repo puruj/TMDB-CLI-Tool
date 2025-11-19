@@ -1,5 +1,7 @@
-﻿using TMDBCLITool.Models;
-namespace TMDBCLITool;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMDBCLITool.Models;
 
 public static class MovieTablePrinter
 {
